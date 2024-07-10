@@ -1,55 +1,50 @@
-import React, { useState, useEffect } from "react";
-
-const About = () => {
-  const [displayText, setDisplayText] = useState("");
-  const [index, setIndex] = useState(0);
-  const [displayTextOrder, setDisplayTextOrder] = useState([
-    "FULL STACK DEVELOPER",
-    "I DO BACKEND",
-    "I DO FRONTEND",
-  ]);
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      const currentText = displayTextOrder[0];
-      const textToDisplay = currentText.substring(0, index);
-      setDisplayText(textToDisplay);
-      if (index === currentText.length) {
-        setIndex(0);
-        setDisplayTextOrder((prevDisplayTextOrder) => [
-          ...prevDisplayTextOrder.slice(1),
-          prevDisplayTextOrder[0],
-        ]);
-      } else {
-        setIndex((prevIndex) => prevIndex + 1);
-      }
-    }, 220);
-
-    return () => clearInterval(intervalId);
-  }, [index, displayTextOrder]);
-
+import React from "react";
+import { Heading } from "./Heading";
+const skills = ["react", "javascript", "node", "typescript", "next.js"];
+export default function About() {
   return (
-    <div className="flex flex-between bg-secondary-background p-20">
-      <div className="w-1/2">
-        <img src="https://placehold.jp/200x200.png" alt="" />
+    <div className="bg-secondary-background px-20 w-full items-center">
+      <Heading props={{ title: "About Me", subTitle: "My Introduction" }} />
+      <div className="flex">
+        <div className="h-[70vh] w-1/2">
+          <img src="https://placehold.co/300x300" alt="" />
+        </div>
+        <div className="flex flex-col gap-5 w-3/4">
+          <p className="text-primary-text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Id
+            inventore reiciendis harum delectus amet saepe sequi sit quam.
+            Repellat praesentium omnis minus ipsum eius alias nihil molestias,
+            libero aliquid natus! Lorem ipsum, dolor sit amet consectetur
+            adipisicing elit. Iusto, incidunt!
+          </p>
+          <p className="text-primary-text ">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. At, animi
+            omnis quam fugit illum debitis explicabo sed eum, expedita sequi
+            quo. Placeat, molestias animi. Quibusdam id aut quisquam accusamus
+            debitis ullam nihil a dolorem ipsa, voluptates magni eaque vero
+            placeat. Temporibus cumque quaerat provident possimus accusantium
+            repudiandae pariatur a qui dolores quasi doloribus veritatis maxime
+            consectetur illum, m doloremque dolorem! Placeat nobis sit ea
+            possimus accusamus!
+          </p>
+        </div>
       </div>
 
-      <div className="w-3/4">
-        <h1 className="text-4xl font-bold text-primary-text mt-4">
-          BABY GUPTA
-        </h1>
-        <h3 className="text-xl font-bold mt-2">MERN : {displayText}</h3>
-        <p className="text-primary-text mt-2 line-clamp-3 hover:line-clamp-none transition delay-150">
-          I'm a dedicated full-stack developer with three years of experience,
-          specializing in creating user-centric websites and applications. My
-          skills include building scalable solutions with React and Node.js,
-          optimizing databases, integrating APIs, and delivering clean,
-          maintainable code. I thrive in collaborative, agile environments and
-          contribute to project success through innovation and teamwork.
-        </p>
+      <div>
+        <h3 className="text-secondary-text">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos,
+          eveniet!
+        </h3>
+        <div className="flex flex-wrap gap-10 mt-5">
+          {skills.map((skill) => {
+            return (
+              <div className="border border-borderDivider py-3 px-5 ">
+                {skill}
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
-};
-
-export default About;
+}

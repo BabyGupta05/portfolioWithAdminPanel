@@ -2,8 +2,8 @@ import React from "react";
 
 export default function Header() {
   return (
-    <header className="bg-primary-background text-primary-text">
-      <div className="container mx-auto px-4">
+    <header className="bg-primary-background text-primary-text px-20 ">
+      <div className="container mx-auto ">
         <div className="flex justify-between items-center py-4">
           <div className="text-xl font-bold">Baby Gupta</div>
           <nav className="space-x-4">
